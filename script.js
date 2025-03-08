@@ -1,19 +1,11 @@
-document.getElementById('generateBtn').addEventListener('click', function() {
-    const cardNumber = generateCardNumber();
-    document.getElementById('cardNumberDisplay').textContent = cardNumber;
-});
-
-function generateCardNumber() {
-    const prefix = '539268'; // You can change this prefix as needed
-    let cardNumber = prefix;
-
-    // Generate the remaining digits
-    for (let i = 0; i < 10; i++) {
-        cardNumber += Math.floor(Math.random() * 10);
+document.getElementById('generateBtn').addEventListener('click', async () => {
+    const cardType = document.getElementById('cardType').value;
+    try {
+        const response = await fetch(`http://localhost:3000/gen?type=${cardType}`);
+        const data = await response.json();
+        document.getElementById('cardNumberDisplay').textContent = `Card Number: ${data.cardNumber}`;
+    } catch (error) {
+        console.error('Error generating card number:', error);
+        document.getElementById('cardNumberDisplay').textContent = 'Failed to generate card number.';
     }
-
-    // Add the |01|29|820 part
-    cardNumber += '|01|29|820';
-
-    return cardNumber;
-}
+});
