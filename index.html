@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Generator</title>
+    <title>Random Card Generator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="card-generator">
-        <h1>Card Number Generator</h1>
+    <div class="container">
+        <h1>Random Card Generator</h1>
+        <label for="cardType">Select Card Type:</label>
+        <select id="cardType">
+            <option value="Visa">Visa</option>
+            <option value="MasterCard">MasterCard</option>
+            <option value="AmericanExpress">American Express</option>
+            <option value="Discover">Discover</option>
+        </select>
         <button id="generateBtn">Generate Card</button>
         <div id="cardNumberDisplay"></div>
     </div>
